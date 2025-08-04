@@ -1,0 +1,55 @@
+﻿<xml> xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <variables>
+    <variable type="" id="zKoETH!_WVRmc8P7HAK?">Target Profit</variable>
+    <variable type="" id="XgQ-f5bcnl)52EYD4ajS">Stop Loss</variable>
+    <variable type="" id=",NFt^@Inar)sfJ@BYW|G">Stake</variable>
+    <variable type="" id="*yW)XzI}9co5E[~!1c4|">Martingale Factor</variable>
+    <variable type="" id="k)9Jckvcr1J:JiulWmuh">Martingale Level</variable>
+    <variable type="" id="Yn0Eq=hEm_2yFK(N+kkN">Compound Level</variable>
+    <variable type="" id="n*P3nFV86z#^Rwsf}ux?">ResultWin</variable>
+    <variable type="" id="q@,2Ua}i#]wgj4NEamSy">Contract Detail [Profit]</variable>
+    <variable type="" id="[/HruIgdM:/U/AJ}400T">SMA50</variable>
+    <variable type="" id="L]]|0W~OI4tSxC^7j?XC">Initial Stake</variable>
+    <variable type="" id="#.%`f9tw*gtOYx#hh.hn">Stake Fuction</variable>
+    <variable type="" id="i%=(4Bt7hE6Dzxo{K*Hy">mm:TotalProfit</variable>
+    <variable type="" id="/?yYDuQB1B0W%yVGg^w0">mm:TradeAgain</variable>
+    <variable type="" id="_D:gp12Li`Df_nGdOcWa">SMA40</variable>
+    <variable type="" id=",:KJi;q`laf7FuKwi5wM">mm:WinStake</variable>
+    <variable type="" id="n9nYp?Ib=kn5d,+S9pJO">Martiangle size</variable>
+    <variable type="" id="r]pdL#sE6T99NON%*2a`">mm:loss_count</variable>
+    <variable type="" id="dp{8P!9Gm!C+_zc,1-C@">mm:Profit</variable>
+    <variable type="" id="3,s~TUIsC1B5ZvmT|J{)">SMA12</variable>
+    <variable type="" id="Ze#U$TAfFCU7zp:|sv6K">mm:TargetProfit</variable>
+    <variable type="" id="9Z)94BYi({0Ixt?4-MBZ">mm:win_count</variable>
+    <variable type="" id="uO|2IaF8A9SYigK#ROA/">SMA5</variable>
+    <variable type="" id=":,%3LIk=sR;h-tXg$nvQ">mm:StopLoss</variable>
+    <variable type="" id="?:OENuF4zyB|Z.Hi6n[c">RSI3</variable>
+    <variable type="" id="syh.$OmG?pPdABsJs)I?">RSI10</variable>
+    <variable type="" id="HaMK?Qd]Fd`J/j/vU?7$">mm:MartingaleFactor</variable>
+    <variable type="" id="%43Qj(-S@]sLrDY4;2.@">mm:loss_level</variable>
+    <variable type="" id="9hF@qoz,QLZ9piV4g9B!">RSI7</variable>
+    <variable type="" id="]6.~EG]X)6]^Zj=9=NuN">mm:MartingaleLevel</variable>
+    <variable type="" id="~#SdxLaTqaggYUzzGibm">mm:CompoundLevel</variable>
+    <variable type="" id="=0PY+5hN=8WWup]H=f/F">mm:MartingaleCompoundActive</variable>
+    <variable type="" id="4D%mdygSOD~k:6oNi|y,">mm:SAM%</variable>
+    <variable type="" id="%mr~Ux7:[n_Gflj8TdkB">SAM%</variable>
+    <variable type="" id="q$PO4Hz}Z-zPRa5ZPM{e">SAM Off After Loss At</variable>
+  </variables>
+  <block type="trade" id="xgH69|xFn9=70w.*3Vo@" x="0" y="0">
+    <field name="MARKET_LIST">volidx</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">R_100</field>
+    <field name="TRADETYPECAT_LIST">callput</field>
+    <field name="TRADETYPE_LIST">risefall</field>
+    <field name="TYPE_LIST">both</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="INITIALIZATION">
+      <block type="procedures_callnoreturn" id="p/_iraB;WmuBwNmdN9i~" inline="false">
+        <mutation name="Management System">
+          <arg name="Target Profit"></arg>
+          <arg name="Stop Loss"></arg>
+          <arg name="Stake"></arg>
+          <arg name="Martingale Factor"></arg>
+          <arg name="Martingale Level"></arg>
