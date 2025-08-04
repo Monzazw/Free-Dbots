@@ -1,0 +1,133 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables>
+    <variable type="number" id="stake">1</variable>
+    <variable type="number" id="multiplier">2</variable>
+    <variable type="number" id="loss_count">0</variable>
+    <variable type="string" id="trade_type">CALL</variable>
+    <variable type="number" id="current_time">0</variable>
+  </variables>
+  <blocks>
+    <block type="trade_definition" id="TRADE">
+      <field name="CONDITION">rise_fall</field>
+      <field name="DURATION">1</field>
+      <field name="DURATION_UNIT">m</field>
+      <field name="BARRIER_TYPE">absolute</field>
+      <field name="BARRIER">0</field>
+      <value name="TRADETYPE">
+        <block type="text">
+          <field name="TEXT">[[trade_type]]</field>
+        </block>
+      </value>
+    </block>
+    
+    <block type="start">
+      <next>
+        <block type="logic_controls_repeat_ext">
+          <value name="TIMES">
+            <block type="math_number">
+              <field name="NUM">9999</field>
+            </block>
+          </value>
+          <statement name="DO">
+            <block type="controls_if">
+              <value name="IF0">
+                <block type="logic_compare">
+                  <field name="OP">OR</field>
+                  <value name="A">
+                    <block type="procedures_callreturn" id="time_check_00">
+                      <mutation name="is_zero_or_43"/>
+                    </block>
+                  </value>
+                  <value name="B">
+                    <block type="procedures_callreturn" id="time_check_43">
+                      <mutation name="is_zero_or_43"/>
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <statement name="DO0">
+                <block type="procedures_call" id="analyze_and_trade">
+                  <mutation name="check_candle_and_trade"/>
+                </block>
+              </statement>
+            </block>
+          </statement>
+        </block>
+      </next>
+    </block>
+    
+    <block type="procedures_defnoreturn" id="check_candle_and_trade">
+      <field name="NAME">check_candle_and_trade</field>
+      <statement name="STACK">
+        <block type="get_ohlc" id="ohlc">
+          <field name="ASSET_TYPE">synthetic_index</field>
+          <field name="SYMBOL">R_100</field>
+          <field name="TIMEFRAME">1</field>
+          <field name="CANDLE_COUNT">2</field>
+          <next>
+            <block type="controls_if">
+              <value name="IF0">
+                <block type="logic_compare">
+                  <field name="OP">GT</field>
+                  <value name="A">
+                    <block type="ohlc">
+                      <field name="PROP">close</field>
+                      <field name="INDEX">1</field>
+                    </block>
+                  </value>
+                  <value name="B">
+                    <block type="ohlc">
+                      <field name="PROP">open</field>
+                      <field name="INDEX">1</field>
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <statement name="DO0">
+                <block type="variables_set">
+                  <field name="VAR">trade_type</field>
+                  <value name="VALUE">
+                    <block type="text">
+                      <field name="TEXT">CALL</field>
+                    </block>
+                  </value>
+                </block>
+              </statement>
+              <next>
+                <block type="trade" id="execute_trade"/>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+    
+    <block type="procedures_defreturn" id="is_zero_or_43">
+      <field name="NAME">is_zero_or_43</field>
+      <statement name="STACK">
+        <block type="variables_set">
+          <field name="VAR">current_time</field>
+          <value name="VALUE">
+            <block type="time_local_second"/>
+          </value>
+        </block>
+      </statement>
+      <value name="RETURN">
+        <block type="logic_compare">
+          <field name="OP">EQ</field>
+          <value name="A">
+            <block type="variables_get">
+              <field name="VAR">current_time</field>
+            </block>
+          </value>
+          <value name="B">
+            <block type="math_number">
+              <field name="NUM">0</field>
+            </block>
+          </value>
+        </block>
+      </value>
+    </block>
+    
+  </blocks>
+</xml>   
